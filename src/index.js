@@ -1,1 +1,1 @@
-// import logos from 'assets/logos.png'
+import logos from './assets/logos.png';

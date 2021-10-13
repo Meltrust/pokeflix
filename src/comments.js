@@ -16,7 +16,7 @@ async function getPokemons(offset, limit) {
   for (let i = offset; i <= offset + limit; i += 1) {
     pokemonArr.push(await getPokemon(i));
   }
-  // console.log(pokemonArr[0].name)
+  console.log(pokemonArr)
   
 }
 
@@ -78,8 +78,9 @@ fetch('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps',
   }).then(res => {console.log(res.text())})
 
 
+var item_id = pokemonArr[0]
+const base = `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/NUi2Jbfvk2pl4lxtwcBf/comments?item_id=${item_id}`
 
-const base = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/NUi2Jbfvk2pl4lxtwcBf/comments'
 
   const username = document.querySelector("#username")
   const comments = document.querySelector("#comments")
@@ -104,8 +105,6 @@ async function createComment() {
   
   async function addcomments(e) {
     e.preventDefault();
-    const item_id = pokemonArr[0].id
-    console.log(item_id)
     const response = await fetch(base, {
       method: 'POST', 
       headers: {
@@ -113,7 +112,6 @@ async function createComment() {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        item_id: item_id,
         username: `${username.value}`,
         comment: comments.value,
       }),

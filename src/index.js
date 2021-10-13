@@ -1,6 +1,5 @@
 /* eslint-disable linebreak-style */
 /* eslint-disable no-await-in-loop */
-import './styles/_reboot.css';
 import './styles/styles.css';
 
 const pokemons = document.querySelector('.pokemons');

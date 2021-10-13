@@ -18,7 +18,8 @@ body {
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 40px;
-  margin-top: 20px;
+  margin-top: 6rem;
+  height: 100%;
 }
 
 .pokecard {
@@ -27,7 +28,8 @@ body {
   background-color: white;
   box-shadow: 0 3px 15px rgba(100, 100, 100, 0.5);
   width: 100%;
-  height: 25vh;
+
+  /* height: 25vh; */
 }
 
 .pokeimg-container {

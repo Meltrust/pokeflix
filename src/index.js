@@ -1,4 +1,5 @@
 import logos from './assets/logos.png'
+import './styles/styles.css';
 
 const base_url = "https://pokeapi.co/api/v2/pokemon/"
 const pokemons = document.querySelector('.pokemons')
@@ -13,9 +14,12 @@ async function getpokemon() {
 
   pokemon1.forEach((pokemon) => {
     const li = document.createElement('li');
+    const btn = document.createElement("button");
+    btn.innerText = 'comment';
     li.innerHTML = `${pokemon.name}: ${pokemon.url}`;
     li.className = 'list_item';
     pokemons.append(li);
+    pokemons.append(btn)
   });
 }
 

@@ -24,7 +24,6 @@ export default async function populateGrid() {
 
   pokemonArr.forEach((pokemon) => {
     const element = document.createElement('div');
-    // element.innerHTML = `name: ${pokemon.name}`;
     element.classList.add('pokecard', 'd-flex', 'flex-column', 'justify-content-around');
     const imgContainer = document.createElement('div');
     imgContainer.classList.add('pokeimg-container');

@@ -5,7 +5,7 @@
 }
 
 .bg-popup{
-  width: 100%;
+  width: 93%;
   height: 100%;
   background-color: rgb(255, 255, 255);
   position: absolute;
@@ -13,6 +13,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  display: none;
 }
 
 .pop-up {
@@ -22,6 +23,7 @@
   text-align: center;
   border: 3px solid #333;
   position: relative;
+
 }
 
 .close {

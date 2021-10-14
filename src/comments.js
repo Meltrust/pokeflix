@@ -16,19 +16,18 @@ async function getPokemons(offset, limit) {
   for (let i = offset; i <= offset + limit; i += 1) {
     pokemonArr.push(await getPokemon(i));
   }
-  console.log(pokemonArr)
-  
 }
 
 export default async function populateGrid() {
   await getPokemons(offset, limit);
 
-  pokemonArr.forEach((pokemon) => {
+  pokemonArr.forEach((pokemon, index) => {
     const element = document.createElement('div');
     element.classList.add('pokecard', 'd-flex', 'flex-column', 'justify-content-around');
+    element.id = index;
     const imgContainer = document.createElement('div');
     imgContainer.classList.add('pokeimg-container');
-
+     
     const pokeImg = document.createElement('img');
     pokeImg.src = pokemon.sprites.other['official-artwork'].front_default;
     imgContainer.appendChild(pokeImg);
@@ -50,6 +49,7 @@ export default async function populateGrid() {
     pokemons.append(element);
     pl.append(pokeName)
 
+
   });
   const title = document.querySelectorAll('.poke-name')
   const btn = document.querySelectorAll('button')
@@ -60,6 +60,7 @@ export default async function populateGrid() {
       title.textContent = pokemonArr[i].name
     })
   }
+
 }
 
 const close = document.querySelector('.close')
@@ -78,7 +79,17 @@ fetch('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps',
   }).then(res => {console.log(res.text())})
 
 
-var item_id = pokemonArr[0]
+var elements = document.querySelectorAll('.pokecard')
+console.log(elements)
+
+var item;
+for(var i = 0; i < elements.length; i++) {
+  item += elements[i].id;
+}
+
+// console.log(item)
+var item_id = 1;
+
 const base = `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/NUi2Jbfvk2pl4lxtwcBf/comments?item_id=${item_id}`
 
 
@@ -92,8 +103,10 @@ let array_of_comments = []
 async function createComment() {
     let response = await fetch(base);
     let data = await response.json();
-    console.log(data)
+    array_of_comments = data;
+    // console.log(data)
     console.log(array_of_comments);
+    update(array_of_comments) 
 
     array_of_comments.forEach((comment) => {
       const p = document.createElement('p');
@@ -101,6 +114,11 @@ async function createComment() {
       p.className = 'comments';
       popup.append(p);
     });
+}
+
+function update(commentsArr) {
+  window.localStorage.setItem('commentsArr', JSON.stringify(commentsArr));
+  console.log(commentsArr)
 }
   
   async function addcomments(e) {

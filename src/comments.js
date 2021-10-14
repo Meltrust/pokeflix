@@ -3,18 +3,21 @@ const popup = document.querySelector('.pop-up')
 const pl = document.querySelector('.placeholder')
 const limit = 8;
 const offset = 1;
-
+let poke_id = 0;
 const pokemonArr = [];
 
 async function getPokemon(id) {
   const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`);
   const data = await response.json();
+  
   return data;
 }
 
 async function getPokemons(offset, limit) {
   for (let i = offset; i <= offset + limit; i += 1) {
     pokemonArr.push(await getPokemon(i));
+    
+    
   }
 }
 
@@ -48,16 +51,15 @@ export default async function populateGrid() {
 
     pokemons.append(element);
     pl.append(pokeName)
-
-
   });
   const title = document.querySelectorAll('.poke-name')
   const btn = document.querySelectorAll('button')
   for(let i=0; i<btn.length; i++){
-    btn[i].addEventListener('click', ()=>{
+    btn[i].addEventListener('click', (e)=>{
       document.querySelector('.bg-popup').style.display = "flex";
-      console.log(pokemonArr[i].name)
+      poke_id = e.target.parentNode.id
       title.textContent = pokemonArr[i].name
+      console.log(poke_id)
     })
   }
 
@@ -78,20 +80,8 @@ fetch('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps',
     },
   }).then(res => {console.log(res.text())})
 
-
-var elements = document.querySelectorAll('.pokecard')
-console.log(elements)
-
-var item;
-for(var i = 0; i < elements.length; i++) {
-  item += elements[i].id;
-}
-
-// console.log(item)
-var item_id = 1;
-
-const base = `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/NUi2Jbfvk2pl4lxtwcBf/comments?item_id=${item_id}`
-
+const BASE_URL = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/';
+const APP_ID = 'NUi2Jbfvk2pl4lxtwcBf';
 
   const username = document.querySelector("#username")
   const comments = document.querySelector("#comments")
@@ -101,12 +91,13 @@ const base = `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi
 let array_of_comments = []
 
 async function createComment() {
-    let response = await fetch(base);
+    const endpoint = `apps/${APP_ID}/comments?item_id=${poke_id}`;
+    let response = await fetch(BASE_URL + endpoint);
     let data = await response.json();
     array_of_comments = data;
     // console.log(data)
-    console.log(array_of_comments);
-    update(array_of_comments) 
+    // console.log(array_of_comments);
+    // update(array_of_comments) 
 
     array_of_comments.forEach((comment) => {
       const p = document.createElement('p');
@@ -114,22 +105,34 @@ async function createComment() {
       p.className = 'comments';
       popup.append(p);
     });
+    update(array_of_comments)
 }
 
-function update(commentsArr) {
-  window.localStorage.setItem('commentsArr', JSON.stringify(commentsArr));
-  console.log(commentsArr)
+function update(array_of_comments) {
+  window.localStorage.setItem('array_of_comments', JSON.stringify(array_of_comments));
+  console.log(array_of_comments)
 }
-  
+
+function load() {
+  let list = [];
+  if (JSON.parse(localStorage.getItem('array_of_comments'))) {
+    list = JSON.parse(localStorage.getItem('array_of_comments'));
+  }
+  return list;
+}
+
   async function addcomments(e) {
     e.preventDefault();
-    const response = await fetch(base, {
+    console.log(e)
+    const endpoint = `apps/${APP_ID}/comments`;
+    const response = await fetch(BASE_URL + endpoint, {
       method: 'POST', 
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
+        item_id: poke_id,
         username: `${username.value}`,
         comment: comments.value,
       }),
@@ -139,7 +142,9 @@ function update(commentsArr) {
     createComment()
   }
 
-
-
-  submit.addEventListener('click', addcomments);
+ 
+  submit.addEventListener('click', (event) => {
+    event.preventDefault();
+    addcomments(event)
+  });
 

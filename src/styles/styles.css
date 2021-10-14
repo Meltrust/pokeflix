@@ -1,8 +1,67 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+body {
+  background: rgb(85, 144, 189);
+  background:
+    linear-gradient(
+      90deg,
+      rgb(76, 140, 189) 0%,
+      rgb(109, 192, 255) 54%,
+      rgba(182, 216, 242, 1) 82%
+    );
+  text-align: center;
 }
+
+.pokemons {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 30px;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 40px;
+  margin-top: 6rem;
+  height: 100%;
+}
+
+.pokecard {
+  border-radius: 10px;
+  padding: 10px;
+  background-color: white;
+  box-shadow: 0 3px 15px rgba(100, 100, 100, 0.5);
+  width: 100%;
+}
+
+.poke-name {
+  text-transform: capitalize;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.pokeimg-container img {
+  text-align: center;
+  display: block;
+  margin: auto;
+  flex-basis: 15%;
+  flex-grow: 0.2;
+  object-fit: contain;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  width: 100%;
+}
+
+.comment-button {
+  flex-basis: 17%;
+}
+
+.name-likes-container {
+  top: 6%;
+  right: 3%;
+}
+
+.bi-heart {
+  cursor: pointer;
+}
+
 
 .bg-popup{
   width: 93%;
@@ -56,7 +115,7 @@
 }
 
 #comments {
-  height: 150px;
+  height: 69px;
 }
 .form input[type="submit"] {
   align-self: flex-end;

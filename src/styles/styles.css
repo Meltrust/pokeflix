@@ -68,3 +68,7 @@ body {
   top: 6%;
   right: 3%;
 }
+
+.bi-heart {
+  cursor: pointer;
+}

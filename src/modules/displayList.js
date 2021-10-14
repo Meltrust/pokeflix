@@ -66,9 +66,8 @@ export default async function populateGrid() {
     nameLikesContainer.append(pokeLikesContainer, pokeLikesCount);
 
     const comBtn = document.createElement('button');
+    comBtn.classList.add('btn', 'btn-info', 'comment-button', 'fs-4');
     comBtn.textContent = 'Comment';
-    comBtn.classList.add('btn', 'comment-button');
-    comBtn.classList.add('btn-info');
 
     element.appendChild(imgContainer);
     element.appendChild(pokeName);

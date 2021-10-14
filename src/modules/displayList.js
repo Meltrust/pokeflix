@@ -19,12 +19,20 @@ async function getPokemons(offset, limit) {
   }
 }
 
+function likesAmount(likes = 0) {
+  const res = `
+      ${likes}
+    `;
+  return res;
+}
+
 export default async function populateGrid() {
   await getPokemons(offset, limit);
 
   pokemonArr.forEach((pokemon) => {
     const element = document.createElement('div');
     element.classList.add('pokecard', 'd-flex', 'flex-column', 'justify-content-around');
+
     const imgContainer = document.createElement('div');
     imgContainer.classList.add('pokeimg-container');
 
@@ -32,9 +40,12 @@ export default async function populateGrid() {
     pokeImg.src = pokemon.sprites.other['official-artwork'].front_default;
     imgContainer.appendChild(pokeImg);
 
+    const nameLikesContainer = document.createElement('div');
+    nameLikesContainer.classList.add('dflex', 'flex-row');
     const pokeName = document.createElement('p');
-    pokeName.classList.add('poke-name');
-    pokeName.classList.add('m-1');
+    pokeName.classList.add('poke-name', 'me-3');
+
+    pokeName.classList.add('my-1');
     pokeName.textContent = pokemon.name;
 
     const comBtn = document.createElement('button');

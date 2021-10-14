@@ -1,11 +1,10 @@
 /* eslint-disable linebreak-style */
-/* eslint-disable no-await-in-loop */
 
 const pokemons = document.querySelector('.pokemons');
 const limit = 8;
 const offset = 1;
 
-const pokemonArr = [];
+let pokemonArr = [];
 
 async function getPokemon(id) {
   const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`);
@@ -13,10 +12,18 @@ async function getPokemon(id) {
   return data;
 }
 
+// async function getPokemons(offset, limit) {
+//   for (let i = offset; i <= offset + limit; i += 1) {
+//     pokemonArr.push(await getPokemon(i));
+//   }
+// }
+
 async function getPokemons(offset, limit) {
+  const promises = [];
   for (let i = offset; i <= offset + limit; i += 1) {
-    pokemonArr.push(await getPokemon(i));
+    promises.push(getPokemon(i));
   }
+  pokemonArr = await Promise.all(promises);
 }
 
 // function likesAmount(likes = 0) {

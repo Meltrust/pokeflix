@@ -63,3 +63,8 @@ body {
 .comment-button {
   flex-basis: 17%;
 }
+
+.name-likes-container {
+  top: 6%;
+  right: 3%;
+}

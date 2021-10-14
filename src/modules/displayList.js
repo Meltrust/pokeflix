@@ -19,19 +19,19 @@ async function getPokemons(offset, limit) {
   }
 }
 
-function likesAmount(likes = 0) {
-  const res = `
-      ${likes}
-    `;
-  return res;
-}
+// function likesAmount(likes = 0) {
+//   const res = `
+//       ${likes}
+//     `;
+//   return res;
+// }
 
 export default async function populateGrid() {
   await getPokemons(offset, limit);
 
   pokemonArr.forEach((pokemon) => {
     const element = document.createElement('div');
-    element.classList.add('pokecard', 'd-flex', 'flex-column', 'justify-content-around');
+    element.classList.add('pokecard', 'd-flex', 'flex-column', 'justify-content-around', 'position-relative');
 
     const imgContainer = document.createElement('div');
     imgContainer.classList.add('pokeimg-container');
@@ -41,12 +41,29 @@ export default async function populateGrid() {
     imgContainer.appendChild(pokeImg);
 
     const nameLikesContainer = document.createElement('div');
-    nameLikesContainer.classList.add('dflex', 'flex-row');
-    const pokeName = document.createElement('p');
-    pokeName.classList.add('poke-name', 'me-3');
+    nameLikesContainer.classList.add('d-flex', 'flex-row', 'justify-content-center', 'align-items-center', 'name-likes-container', 'position-absolute');
 
-    pokeName.classList.add('my-1');
+    imgContainer.appendChild(nameLikesContainer);
+
+    const pokeName = document.createElement('p');
+    pokeName.classList.add('poke-name', 'me-2', 'mb-3', 'fs-3');
+
+    const pokeLikesContainer = document.createElement('div');
+    pokeLikesContainer.classList.add('me-2', 'fs-3');
+
+    const pokeLikesIcon = document.createElement('i');
+    pokeLikesIcon.classList.add('bi', 'bi-heart', 'fs-3');
+
+    const pokeLikesCount = document.createElement('div');
+    pokeLikesCount.id = ('');
+    pokeLikesCount.classList.add('fs-3', 'mb-1');
+    pokeLikesCount.textContent = '0';
+
     pokeName.textContent = pokemon.name;
+
+    pokeLikesContainer.appendChild(pokeLikesIcon);
+
+    nameLikesContainer.append(pokeLikesContainer, pokeLikesCount);
 
     const comBtn = document.createElement('button');
     comBtn.textContent = 'Comment';

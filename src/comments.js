@@ -1,12 +1,14 @@
 const pokemons = document.querySelector('.pokemons');
 const commentSection = document.querySelector('#comments-section')
 const detailSection = document.querySelector('#detail')
+const imageSection = document.querySelector('#images')
 let commentsCount = document.querySelector('#comments-count')
 const limit = 8;
 const offset = 1;
 let poke_id = 0;
 let array_of_comments = []
 const pokemonArr = [];
+let srcImg = [];
 
 async function getPokemon(id) {
   const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`);
@@ -46,6 +48,7 @@ export default async function populateGrid() {
     comBtn.classList.add('btn', 'comment-button');
     comBtn.classList.add('btn-info');
     comBtn.setAttribute('id', pokemon.name)
+    comBtn.setAttribute('onclick', `window.testyFunct( '${pokeImg.src}' )`);
  
   
     element.appendChild(imgContainer);
@@ -54,8 +57,6 @@ export default async function populateGrid() {
 
     pokemons.append(element);
     element.append(pokeName)
-   
- 
   });
   const btn = document.querySelectorAll('button')
   
@@ -69,11 +70,19 @@ export default async function populateGrid() {
       title.innerHTML = btn[i].id;
       detailSection.append(title)
       commentsDOM()
+      
     })
   }
 
 }
 
+
+window.testyFunct = (e) => {
+  imageSection.innerHTML = "";
+  const img = document.createElement('img');
+  img.src = e;
+  imageSection.append(img);
+};
 
 async function commentsDOM() {
   await createComment();
@@ -89,6 +98,15 @@ async function commentsDOM() {
   commentsCount.innerHTML = count;
 };
 
+
+// async function imageDOM() {
+//   await getPokemons(offset, limit);
+//   console.log(srcImg)
+//   srcImg.forEach((url) => {
+//     imageSection.append(url);
+//     console.log(imageSection)
+//   });
+// };
 
 const close = document.querySelector('.close')
 

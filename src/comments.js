@@ -44,6 +44,8 @@ export default async function populateGrid() {
     comBtn.textContent = 'Comment';
     comBtn.classList.add('btn', 'comment-button');
     comBtn.classList.add('btn-info');
+    comBtn.setAttribute('id', pokemon.name)
+    
 
     element.appendChild(imgContainer);
     element.appendChild(pokeName);
@@ -52,16 +54,19 @@ export default async function populateGrid() {
     pokemons.append(element);
     element.append(pokeName)
    
-    const title = document.createElement('h6')
-    title.innerText = pokemon.name;
-    detailSection.append(title) 
+ 
   });
   const btn = document.querySelectorAll('button')
+  
   for(let i=0; i<btn.length; i++){
     btn[i].addEventListener('click', (e)=>{
+      detailSection.innerHTML = "";
       document.querySelector('.bg-popup').style.display = "flex";
       poke_id = e.target.parentNode.id
-      console.log(poke_id)
+      console.log(btn[i].id)
+      const title = document.createElement('h6')
+      title.innerHTML = btn[i].id;
+      detailSection.append(title)
       commentsDOM()
     })
   }
@@ -80,9 +85,6 @@ async function commentsDOM() {
     commentSection.append(p);
   });
 };
-
-
-
 
 
 const close = document.querySelector('.close')

@@ -1,3 +1,5 @@
+/* eslint-disable linebreak-style */
+
 const pokemons = document.querySelector('.pokemons');
 const commentSection = document.querySelector('#comments-section');
 const detailSection = document.querySelector('#detail');
@@ -7,7 +9,9 @@ const limit = 8;
 const offset = 1;
 let pokeId = 0;
 let arrayOfComments = [];
-const pokemonArr = [];
+let pokemonArr = [];
+const BASE_URL = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/';
+const APP_ID = 'NUi2Jbfvk2pl4lxtwcBf';
 
 async function getPokemon(id) {
   const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`);
@@ -16,8 +20,36 @@ async function getPokemon(id) {
 }
 
 async function getPokemons(offset, limit) {
+  const promises = [];
   for (let i = offset; i <= offset + limit; i += 1) {
-    pokemonArr.push(await getPokemon(i));
+    promises.push(getPokemon(i));
+  }
+  pokemonArr = await Promise.all(promises);
+}
+
+async function createComment() {
+  const endpoint = `apps/${APP_ID}/comments?item_id=${pokeId}`;
+  const response = await fetch(BASE_URL + endpoint);
+  const data = await response.json();
+  arrayOfComments = data;
+}
+
+async function commentsDOM() {
+  await createComment();
+
+  commentSection.innerHTML = '';
+  if (arrayOfComments.length === 0) {
+    commentsCount.innerHTML = '';
+    commentSection.innerHTML = '';
+  } else {
+    arrayOfComments.forEach((comment) => {
+      const p = document.createElement('p');
+      p.innerHTML = `${comment.username}: ${comment.comment}`;
+      p.className = 'comments';
+      commentSection.append(p);
+    });
+    const count = arrayOfComments.length;
+    commentsCount.innerHTML = count;
   }
 }
 
@@ -57,21 +89,21 @@ export default async function populateGrid() {
   });
   const btn = document.querySelectorAll('button');
 
-  for (let i = 0; i < btn.length; i += 1) {
-    btn[i].addEventListener('click', (e) => {
+  btn.forEach((ele) => {
+    ele.addEventListener('click', (e) => {
       detailSection.innerHTML = '';
       document.querySelector('.bg-popup').style.display = 'flex';
       pokeId = e.target.parentNode.id;
       const title = document.createElement('h6');
-      title.innerHTML = `Name: ${btn[i].name}`;
+      title.innerHTML = `Name: ${ele.name}`;
       detailSection.append(title);
 
       const height = document.createElement('h6');
-      height.innerHTML = `height: ${btn[i].id}`;
+      height.innerHTML = `height: ${ele.id}`;
       detailSection.append(height);
       commentsDOM();
     });
-  }
+  });
 }
 
 window.testyFunct = (e) => {
@@ -87,23 +119,12 @@ close.addEventListener('click', () => {
   document.querySelector('.bg-popup').style.display = 'none';
 });
 
-const BASE_URL = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/';
-const APP_ID = 'NUi2Jbfvk2pl4lxtwcBf';
-
 const username = document.querySelector('#username');
 const comments = document.querySelector('#comments');
 const submit = document.querySelector('#submit');
 
-async function createComment() {
-  const endpoint = `apps/${APP_ID}/comments?item_id=${pokeId}`;
-  const response = await fetch(BASE_URL + endpoint);
-  const data = await response.json();
-  arrayOfComments = data;
-}
-
 async function addcomments(e) {
   e.preventDefault();
-  console.log(e);
   const endpoint = `apps/${APP_ID}/comments`;
   const response = await fetch(BASE_URL + endpoint, {
     method: 'POST',
@@ -118,25 +139,12 @@ async function addcomments(e) {
     }),
 
   });
-  console.log(response);
   createComment();
-}
-
-async function commentsDOM() {
-  await createComment();
-
-  commentSection.innerHTML = '';
-  arrayOfComments.forEach((comment) => {
-    const p = document.createElement('p');
-    p.innerHTML = `${comment.username}: ${comment.comment}`;
-    p.className = 'comments';
-    commentSection.append(p);
-  });
-  const count = arrayOfComments.length;
-  commentsCount.innerHTML = count;
+  return response;
 }
 
 submit.addEventListener('click', (event) => {
   event.preventDefault();
   addcomments(event);
+  commentsDOM();
 });

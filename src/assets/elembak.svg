@@ -1,0 +1,3 @@
+<svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" id="blobSvg">
+  <path id="blob" d="M457,325Q429,400,357,423.5Q285,447,217.5,435Q150,423,109,369.5Q68,316,44.5,241.5Q21,167,81,114Q141,61,214.5,48Q288,35,348,76Q408,117,446.5,183.5Q485,250,457,325Z" fill="#00cec9" style="--darkreader-inline-fill: #2e3233;" data-darkreader-inline-fill=""></path>
+</svg>

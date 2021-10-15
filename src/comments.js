@@ -8,12 +8,11 @@ const offset = 1;
 let poke_id = 0;
 let array_of_comments = []
 const pokemonArr = [];
-let srcImg = [];
+
 
 async function getPokemon(id) {
   const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`);
   const data = await response.json();
-  // console.log(data.height)
   return data;
 }
 
@@ -47,8 +46,10 @@ export default async function populateGrid() {
     comBtn.textContent = 'Comment';
     comBtn.classList.add('btn', 'comment-button');
     comBtn.classList.add('btn-info');
-    comBtn.setAttribute('id', pokemon.name)
+    comBtn.setAttribute('name', pokemon.name)
     comBtn.setAttribute('onclick', `window.testyFunct( '${pokeImg.src}' )`);
+    comBtn.setAttribute('id', pokemon.height);
+
  
   
     element.appendChild(imgContainer);
@@ -65,17 +66,19 @@ export default async function populateGrid() {
       detailSection.innerHTML = "";
       document.querySelector('.bg-popup').style.display = "flex";
       poke_id = e.target.parentNode.id
-      console.log(btn[i].id)
       const title = document.createElement('h6')
-      title.innerHTML = btn[i].id;
+      title.innerHTML = "Name: " + btn[i].name;
       detailSection.append(title)
+
+      const height = document.createElement('h6')
+      height.innerHTML = "height: " + btn[i].id;
+      detailSection.append(height)
       commentsDOM()
       
     })
   }
 
 }
-
 
 window.testyFunct = (e) => {
   imageSection.innerHTML = "";

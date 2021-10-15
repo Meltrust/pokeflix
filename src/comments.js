@@ -1,6 +1,7 @@
 const pokemons = document.querySelector('.pokemons');
 const commentSection = document.querySelector('#comments-section')
 const detailSection = document.querySelector('#detail')
+let commentsCount = document.querySelector('#comments-count')
 const limit = 8;
 const offset = 1;
 let poke_id = 0;
@@ -45,8 +46,8 @@ export default async function populateGrid() {
     comBtn.classList.add('btn', 'comment-button');
     comBtn.classList.add('btn-info');
     comBtn.setAttribute('id', pokemon.name)
-    
-
+ 
+  
     element.appendChild(imgContainer);
     element.appendChild(pokeName);
     element.appendChild(comBtn);
@@ -84,6 +85,8 @@ async function commentsDOM() {
     p.className = 'comments';
     commentSection.append(p);
   });
+  let count = array_of_comments.length
+  commentsCount.innerHTML = count;
 };
 
 
@@ -102,8 +105,6 @@ const APP_ID = 'NUi2Jbfvk2pl4lxtwcBf';
   const comments = document.querySelector("#comments")
   const submit = document.querySelector("#submit")
   
-  
-
 
 async function createComment() {
     const endpoint = `apps/${APP_ID}/comments?item_id=${poke_id}`;

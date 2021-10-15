@@ -1,15 +1,12 @@
-/* eslint-disable linebreak-style */
-/* eslint-disable no-await-in-loop */
-import commentsDOM from './comments';
-
 const pokemons = document.querySelector('.pokemons');
-const limit = 8;
-const offset = 1;
-// const pokeId = 0;
-
+const commentSection = document.querySelector('#comments-section');
 const detailSection = document.querySelector('#detail');
 const imageSection = document.querySelector('#images');
-
+const commentsCount = document.querySelector('#comments-count');
+const limit = 8;
+const offset = 1;
+let pokeId = 0;
+let arrayOfComments = [];
 const pokemonArr = [];
 
 async function getPokemon(id) {
@@ -27,9 +24,10 @@ async function getPokemons(offset, limit) {
 export default async function populateGrid() {
   await getPokemons(offset, limit);
 
-  pokemonArr.forEach((pokemon) => {
+  pokemonArr.forEach((pokemon, index) => {
     const element = document.createElement('div');
     element.classList.add('pokecard', 'd-flex', 'flex-column', 'justify-content-around');
+    element.id = index;
     const imgContainer = document.createElement('div');
     imgContainer.classList.add('pokeimg-container');
 
@@ -55,15 +53,15 @@ export default async function populateGrid() {
     element.appendChild(comBtn);
 
     pokemons.append(element);
+    element.append(pokeName);
   });
-
   const btn = document.querySelectorAll('button');
 
   for (let i = 0; i < btn.length; i += 1) {
-    btn[i].addEventListener('click', () => {
+    btn[i].addEventListener('click', (e) => {
       detailSection.innerHTML = '';
       document.querySelector('.bg-popup').style.display = 'flex';
-      // pokeId = e.target.parentNode.id;
+      pokeId = e.target.parentNode.id;
       const title = document.createElement('h6');
       title.innerHTML = `Name: ${btn[i].name}`;
       detailSection.append(title);
@@ -82,3 +80,63 @@ window.testyFunct = (e) => {
   img.src = e;
   imageSection.append(img);
 };
+
+const close = document.querySelector('.close');
+
+close.addEventListener('click', () => {
+  document.querySelector('.bg-popup').style.display = 'none';
+});
+
+const BASE_URL = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/';
+const APP_ID = 'NUi2Jbfvk2pl4lxtwcBf';
+
+const username = document.querySelector('#username');
+const comments = document.querySelector('#comments');
+const submit = document.querySelector('#submit');
+
+async function createComment() {
+  const endpoint = `apps/${APP_ID}/comments?item_id=${pokeId}`;
+  const response = await fetch(BASE_URL + endpoint);
+  const data = await response.json();
+  arrayOfComments = data;
+}
+
+async function addcomments(e) {
+  e.preventDefault();
+  console.log(e);
+  const endpoint = `apps/${APP_ID}/comments`;
+  const response = await fetch(BASE_URL + endpoint, {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      item_id: pokeId,
+      username: `${username.value}`,
+      comment: comments.value,
+    }),
+
+  });
+  console.log(response);
+  createComment();
+}
+
+async function commentsDOM() {
+  await createComment();
+
+  commentSection.innerHTML = '';
+  arrayOfComments.forEach((comment) => {
+    const p = document.createElement('p');
+    p.innerHTML = `${comment.username}: ${comment.comment}`;
+    p.className = 'comments';
+    commentSection.append(p);
+  });
+  const count = arrayOfComments.length;
+  commentsCount.innerHTML = count;
+}
+
+submit.addEventListener('click', (event) => {
+  event.preventDefault();
+  addcomments(event);
+});

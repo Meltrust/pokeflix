@@ -140,11 +140,37 @@ async function addcomments(e) {
 
   });
   createComment();
+  commentsDOM();
   return response;
 }
 
 submit.addEventListener('click', (event) => {
   event.preventDefault();
   addcomments(event);
-  commentsDOM();
 });
+
+// async function createComment() {
+//   const endpoint = `apps/${APP_ID}/comments?item_id=${pokeId}`;
+//   const response = await fetch(BASE_URL + endpoint);
+//   const data = await response.json();
+//   arrayOfComments = data;
+// }
+
+// async function commentsDOM() {
+//   await createComment();
+
+//   commentSection.innerHTML = '';
+//   if (arrayOfComments.length === 0) {
+//     commentsCount.innerHTML = '';
+//     commentSection.innerHTML = '';
+//   } else {
+//     arrayOfComments.forEach((comment) => {
+//       const p = document.createElement('p');
+//       p.innerHTML = `${comment.username}: ${comment.comment}`;
+//       p.className = 'comments';
+//       commentSection.append(p);
+//     });
+//     const count = arrayOfComments.length;
+//     commentsCount.innerHTML = count;
+//   }
+// }

@@ -13,12 +13,12 @@ body {
 .pokemons {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: 30px;
+  gap: 1rem;
   width: 80%;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 40px;
-  margin-top: 6rem;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
   height: 100%;
 }
 
@@ -44,7 +44,8 @@ body {
 .poke-name {
   text-transform: capitalize;
   font-weight: bold;
-  font-size: 1.2rem;
+
+  /* font-size: 1.2rem; */
 }
 
 .pokeimg-container img {

@@ -12,7 +12,6 @@ async function getLikes() {
 
   return obj;
 }
-getLikes();
 
 async function postLikes(element = {}) {
   const response = await fetch(likesUrl, {
@@ -33,12 +32,6 @@ async function getPokemon(id) {
 
   return data;
 }
-
-// async function getPokemons(offset, limit) {
-//   for (let i = offset; i <= offset + limit; i += 1) {
-//     pokemonArr.push(await getPokemon(i));
-//   }
-// }
 
 async function getPokemons(offset, limit) {
   const promises = [];
@@ -86,15 +79,15 @@ export default async function populateGrid() {
     pokeLikesIcon.setAttribute('onclick', `window.addLike( ${pokemon.id} )`);
 
     const pokeLikesCount = document.createElement('div');
-    const pokeLikesRetreiveCountElem = likesArr.findIndex((e) => e.item_id === `item${pokemon.id}`);
+    const pokeLikesRetreiveCountId = likesArr.findIndex((e) => e.item_id === `item${pokemon.id}`);
 
     pokeLikesCount.id = `likeCnt${pokemon.id}`;
     pokeLikesCount.classList.add('fs-3', 'mb-1');
 
-    if (pokeLikesRetreiveCountElem === -1 || null || undefined) {
+    if (pokeLikesRetreiveCountId === -1 || null || undefined) {
       pokeLikesCount.textContent = 0;
     } else {
-      pokeLikesCount.textContent = likesArr[pokeLikesRetreiveCountElem].likes;
+      pokeLikesCount.textContent = likesArr[pokeLikesRetreiveCountId].likes;
     }
     pokeName.textContent = pokemon.name;
 

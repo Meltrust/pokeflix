@@ -66,13 +66,11 @@ body {
   cursor: pointer;
 }
 
-
-.bg-popup{
+.bg-popup {
   width: 93%;
   background-color: rgb(255, 255, 255);
   position: absolute;
   top: 0;
-  display: flex;
   justify-content: center;
   align-items: center;
   display: none;
@@ -84,7 +82,6 @@ body {
   text-align: center;
   border: 3px solid #333;
   position: relative;
-
 }
 
 .close {
@@ -105,7 +102,6 @@ body {
   flex-direction: column;
   margin: 0 auto;
   width: 600px;
-  
 }
 
 .form input[type="text"] {
@@ -119,6 +115,7 @@ body {
 #comments {
   height: 69px;
 }
+
 .form input[type="submit"] {
   align-self: flex-end;
   background: #fff;

@@ -1,5 +1,6 @@
 const pokemons = document.querySelector('.pokemons');
 const commentSection = document.querySelector('#comments-section')
+const detailSection = document.querySelector('#detail')
 const limit = 8;
 const offset = 1;
 let poke_id = 0;
@@ -9,7 +10,7 @@ const pokemonArr = [];
 async function getPokemon(id) {
   const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`);
   const data = await response.json();
-  // console.log(data)
+  // console.log(data.height)
   return data;
 }
 
@@ -50,15 +51,17 @@ export default async function populateGrid() {
 
     pokemons.append(element);
     element.append(pokeName)
-
-    
+   
+    const title = document.createElement('h6')
+    title.innerText = pokemon.name;
+    detailSection.append(title) 
   });
   const btn = document.querySelectorAll('button')
   for(let i=0; i<btn.length; i++){
     btn[i].addEventListener('click', (e)=>{
       document.querySelector('.bg-popup').style.display = "flex";
       poke_id = e.target.parentNode.id
-      console.log(e)
+      console.log(poke_id)
       commentsDOM()
     })
   }
@@ -68,8 +71,8 @@ export default async function populateGrid() {
 
 async function commentsDOM() {
   await createComment();
-
-
+  
+  commentSection.innerHTML = "";
   array_of_comments.forEach((comment) => {
     const p = document.createElement('p');
     p.innerHTML = `${comment.username}: ${comment.comment}`;
@@ -78,18 +81,16 @@ async function commentsDOM() {
   });
 };
 
+
+
+
+
 const close = document.querySelector('.close')
 
 close.addEventListener("click", () => {
   document.querySelector('.bg-popup').style.display = "none";
-  // deleteChild()
-})
 
-// function deleteChild() {
- 
-//   commentSection.removeChild(p)
-//   console.log(first)
-// }
+})
 
 
 const BASE_URL = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/';

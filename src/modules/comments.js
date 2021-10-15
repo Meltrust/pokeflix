@@ -8,20 +8,6 @@ close.addEventListener('click', () => {
   document.querySelector('.bg-popup').style.display = 'none';
 });
 
-async function commentsDOM() {
-  await createComment();
-
-  commentSection.innerHTML = '';
-  arrayOfComments.forEach((comment) => {
-    const p = document.createElement('p');
-    p.innerHTML = `${comment.username}: ${comment.comment}`;
-    p.className = 'comments';
-    commentSection.append(p);
-  });
-  const count = arrayOfComments.length;
-  commentsCount.innerHTML = count;
-}
-
 const BASE_URL = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/';
 const APP_ID = 'NUi2Jbfvk2pl4lxtwcBf';
 
@@ -56,6 +42,20 @@ async function addcomments(e) {
   });
   console.log(response);
   createComment();
+}
+
+async function commentsDOM() {
+  await createComment();
+
+  commentSection.innerHTML = '';
+  arrayOfComments.forEach((comment) => {
+    const p = document.createElement('p');
+    p.innerHTML = `${comment.username}: ${comment.comment}`;
+    p.className = 'comments';
+    commentSection.append(p);
+  });
+  const count = arrayOfComments.length;
+  commentsCount.innerHTML = count;
 }
 
 submit.addEventListener('click', (event) => {

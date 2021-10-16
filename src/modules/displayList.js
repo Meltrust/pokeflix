@@ -1,4 +1,5 @@
 /* eslint-disable linebreak-style */
+import { getLikes, postLikes } from './likes';
 
 const pokemons = document.querySelector('.pokemons');
 const commentSection = document.querySelector('#comments-section');
@@ -12,27 +13,6 @@ let arrayOfComments = [];
 let pokemonArr = [];
 const BASE_URL = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/';
 const APP_ID = 'NUi2Jbfvk2pl4lxtwcBf';
-const likesUrl = ('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/NUi2Jbfvk2pl4lxtwcBf/likes/'); // likes
-
-// GET likes
-async function getLikes() {
-  const response = await fetch(likesUrl);
-  const obj = await response.json();
-
-  return obj;
-}
-
-// POST likes
-async function postLikes(element = {}) {
-  const response = await fetch(likesUrl, {
-    method: 'POST',
-    body: JSON.stringify(element),
-    headers: {
-      'Content-type': 'application/json; charset=UTF-8',
-    },
-  });
-  return response.status;
-}
 
 async function getPokemon(id) {
   const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`);

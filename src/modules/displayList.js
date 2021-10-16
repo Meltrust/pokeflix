@@ -132,8 +132,10 @@ export default async function populateGrid() {
     comBtn.textContent = 'Comment';
     comBtn.classList.add('btn', 'btn-info', 'comment-button', 'fs-4');
     comBtn.setAttribute('name', pokemon.name);
+
     comBtn.setAttribute('onclick', `window.testyFunct( '${pokeImg.src}' )`);
-    comBtn.setAttribute('id', pokemon.height);
+    comBtn.setAttribute('id', index);
+    comBtn.setAttribute('height', pokemon.height);
 
     element.appendChild(imgContainer);
     element.appendChild(pokeName);
@@ -142,7 +144,6 @@ export default async function populateGrid() {
     pokemons.append(element);
     element.append(pokeName); // AMALS APPEND CAREFUL!
   });
-
   const pokeCount = document.getElementById('pokeCounter');
   pokeCount.textContent = `Pokemons Count: ${elementsCounter(pokemonArr)}`;
 
@@ -153,13 +154,20 @@ export default async function populateGrid() {
       detailSection.innerHTML = '';
       document.querySelector('.bg-popup').style.display = 'flex';
       pokeId = e.target.parentNode.id;
+      const { height } = pokemonArr[pokeId];
+      const { weight } = pokemonArr[pokeId];
+      const exp = pokemonArr[pokeId].base_experience;
       const title = document.createElement('h6');
       title.innerHTML = `Name: ${ele.name}`;
       detailSection.append(title);
+      const heightDom = document.createElement('h6');
+      const weightDom = document.createElement('h6');
+      const expDom = document.createElement('h6');
 
-      const height = document.createElement('h6');
-      height.innerHTML = `height: ${ele.id}`; // CORRECT THIS.  RETURNS THE ID BUT NEED THE HEIGHT
-      detailSection.append(height);
+      heightDom.innerHTML = `Height: ${height}`;
+      weightDom.innerHTML = `Weight: ${weight}`;
+      expDom.innerHTML = `Experience: ${exp}`;
+      detailSection.append(heightDom, weightDom, expDom);
       commentsDOM();
     });
   });

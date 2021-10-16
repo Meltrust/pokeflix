@@ -1,10 +1,10 @@
-# Scory
+# Pokeflix
 
-> A Javascript web app that connects to an API to retrieve and save scores.
+> An APP that shows Pokemons that users can add likes and commnets.
 
 ![screenshot](./assets/img/app_screenshot.png)
 
-Scory is a web app made with Javascript that displays scores submitted by different players. It also allows you to submit your score. All data is preserved thanks to the external Leaderboard API service.
+This App gets data from Pokeapi API to display Pokemons, here, we're displaying the Pokemon's details, and in other API, we're posting and creating the comments and likes.
 
 ## Demo
 
@@ -12,10 +12,17 @@ https://meltrust.github.io/scory/
 
 ## Made with
 
-- Plain Javascript
+- Javascript
 - Webpack
 - CSS3
 - HTML5
+- bootstrap
+- API
+
+## API
+
+- Pokeapi: [data about the Pokémon world](https://pokeapi.co/)
+- Involvement API: [record the different user interactions](https://www.notion.so/Involvement-API-869e60b5ad104603aa6db59e08150270)
 
 ## Future Updates & Roadmap
 
@@ -27,7 +34,7 @@ To get a local copy up and running follow these simple example steps:
 
 1. Under the repository name, click the Clone or download green button.
 
-![clone](https://user-images.githubusercontent.com/53324035/73660989-4451aa80-4667-11ea-8a89-176f89d6548a.png)
+![clone](https://github.com/Meltrust/js-capstone.git)
 
 2.Copy the URL given by clicking the clipboard button
 
@@ -37,19 +44,34 @@ To get a local copy up and running follow these simple example steps:
 
 5.Change the current directory to the newly created folder
 
-6.Open the index.html file on your browser. You can add and remove books which persist on browser reloads.
 
-7.In your terminal, `npm install` to install the dependencies.
+### Run project
 
-8.Now run `npm start` and the app should appear on your browser.
+```bash
+$ npm install
+$ npm run start # this will make webpack watching for your changes in code
+```
 
-## Author
+### Open page in browser
+```bash
+$ npn start
+```
+
+## Authors
 
 👤 **Miguel Tapia**
 
 - Github: [@meltrust](https://github.com/meltrust)
 - Linkedin: [linkedin](https://www.linkedin.com/in/meltrust/)
 - Or talk to me directly at: original.mtapia@outlook.com
+
+👤 **Amal Hersi**
+
+- GitHub: [Amal Hersi](https://github.com/Amalcxc)
+- Twitter: [@Amalcx4](https://twitter.com/home?lang=en)
+- LinkedIn: [Amal Hersi](https://www.linkedin.com/in/amal-hersi-a29583205/)
+
+
 
 ## 🤝 Contributing
 

@@ -139,4 +139,5 @@ async function commentsDOM() {
 submit.addEventListener('click', (event) => {
   event.preventDefault();
   addcomments(event);
+  commentsDOM()
 });

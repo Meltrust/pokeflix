@@ -34,7 +34,7 @@ To get a local copy up and running follow these simple example steps:
 
 1. Under the repository name, click the Clone or download green button.
 
-![clone](https://github.com/Meltrust/js-capstone.git)
+2. git clone https://github.com/Amalcxc/ToDo-List.g
 
 2.Copy the URL given by clicking the clipboard button
 

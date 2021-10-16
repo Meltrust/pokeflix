@@ -60,13 +60,13 @@ async function commentsDOM() {
 
 export default async function populateGrid() {
   await getPokemons(offset, limit);
-  const likesArr = await getLikes(); // likes
+  const likesArr = await getLikes();
 
-  pokemonArr.forEach((pokemon, index) => { // AMAL index for comments
+  pokemonArr.forEach((pokemon, index) => {
     const element = document.createElement('div');
     element.classList.add('pokecard', 'd-flex', 'flex-column', 'justify-content-around', 'position-relative');
     element.setAttribute('name', `${pokemon.name}`);
-    element.id = index; // AMAL index for comments
+    element.id = index;
     const imgContainer = document.createElement('div');
     imgContainer.classList.add('pokeimg-container');
 
@@ -82,7 +82,6 @@ export default async function populateGrid() {
     const pokeName = document.createElement('p');
     pokeName.classList.add('poke-name', 'mb-0', 'fs-4');
 
-    // LIKES START.  THE ID CHANGES. CHECK CONFLICTS WITH AMAL'S
     const pokeLikesContainer = document.createElement('div');
     pokeLikesContainer.classList.add('me-2', 'fs-3');
 
@@ -122,7 +121,6 @@ export default async function populateGrid() {
     element.appendChild(comBtn);
 
     pokemons.append(element);
-    element.append(pokeName); // AMALS APPEND CAREFUL!
   });
   const pokeCount = document.getElementById('pokeCounter');
   pokeCount.textContent = `Pokemons Count: ${elementsCounter(pokemonArr)}`;

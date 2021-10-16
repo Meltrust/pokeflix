@@ -10,8 +10,18 @@ body {
   text-align: center;
 }
 
-.main {
+.nav-right {
+  margin-right: 12rem;
+}
+
+.container-fluid {
   position: relative;
+}
+
+.logo-img {
+  margin-left: 12rem;
+  height: 40px;
+  width: 8rem;
 }
 
 .pokemons {
@@ -146,4 +156,8 @@ body {
 
 #comments-table-wrapper {
   text-align: start;
+}
+
+.footer {
+  z-index: -1 !important;
 }

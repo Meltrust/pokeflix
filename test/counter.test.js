@@ -14,6 +14,15 @@ const arrObjsPoks = [
   { id: 9, name: 'Venusaur' },
 ];
 
+const arrayLikes = [
+  { username: 'Marco', comment: 'Nice!' },
+  { username: 'Mark', comment: 'Exp max' },
+  { username: 'Andrew', comment: 'I like this guy' },
+  { username: 'Miguel', comment: 'Max evolution?' },
+  { username: 'Tobias', comment: 'How much exp?' },
+  { username: 'Carl', comment: 'Hello everyone!' },
+];
+
 it('Counts elements of an array of pokemon objects', () => {
   expect(elementsCounter(arrObjsPoks)).toBe(9);
 });
@@ -24,4 +33,12 @@ it('Returns the correct number of elements', () => {
 
 it('Counts inside of object properties', () => {
   expect(elementsCounter(arrObjsPoks[5].abilities)).toBe(2);
+});
+
+it('Counts the elements of the comments section', () => {
+  expect(elementsCounter(arrayLikes)).toBe(6);
+});
+
+it('Returns the correct number of elements', () => {
+  expect(elementsCounter(arrayLikes)).not.toBe(0);
 });

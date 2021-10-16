@@ -12,6 +12,27 @@ let arrayOfComments = [];
 let pokemonArr = [];
 const BASE_URL = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/';
 const APP_ID = 'NUi2Jbfvk2pl4lxtwcBf';
+const likesUrl = ('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/NUi2Jbfvk2pl4lxtwcBf/likes/'); // likes
+
+// GET likes
+async function getLikes() {
+  const response = await fetch(likesUrl);
+  const obj = await response.json();
+
+  return obj;
+}
+
+// POST likes
+async function postLikes(element = {}) {
+  const response = await fetch(likesUrl, {
+    method: 'POST',
+    body: JSON.stringify(element),
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8',
+    },
+  });
+  return response.status;
+}
 
 async function getPokemon(id) {
   const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`);
@@ -55,10 +76,11 @@ async function commentsDOM() {
 
 export default async function populateGrid() {
   await getPokemons(offset, limit);
+  const likesArr = await getLikes();
 
   pokemonArr.forEach((pokemon, index) => {
     const element = document.createElement('div');
-    element.classList.add('pokecard', 'd-flex', 'flex-column', 'justify-content-around');
+    element.classList.add('pokecard', 'd-flex', 'flex-column', 'justify-content-around', 'position-relative');
     element.id = index;
     const imgContainer = document.createElement('div');
     imgContainer.classList.add('pokeimg-container');

@@ -1,0 +1,163 @@
+body {
+  background: rgb(85, 144, 189);
+  background:
+    linear-gradient(
+      90deg,
+      rgb(76, 140, 189) 0%,
+      rgb(109, 192, 255) 54%,
+      rgba(182, 216, 242, 1) 82%
+    );
+  text-align: center;
+}
+
+.nav-right {
+  margin-right: 12rem;
+}
+
+.container-fluid {
+  position: relative;
+}
+
+.logo-img {
+  margin-left: 12rem;
+  height: 40px;
+  width: 8rem;
+}
+
+.pokemons {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1rem;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  height: 100%;
+}
+
+.pokecard {
+  border-radius: 10px;
+  padding: 10px;
+  background-color: white;
+  box-shadow: 0 3px 15px rgba(100, 100, 100, 0.5);
+  width: 100%;
+}
+
+.pokeimg-container {
+  background-image: url("../assets/elembak.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+}
+
+.poke-name {
+  text-transform: capitalize;
+  font-weight: bold;
+}
+
+.pokeimg-container img {
+  text-align: center;
+  display: block;
+  margin: auto;
+  flex-basis: 15%;
+  flex-grow: 0.2;
+  object-fit: contain;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  width: 100%;
+}
+
+.comment-button {
+  flex-basis: 17%;
+}
+
+.name-likes-container {
+  top: 6%;
+  right: 3%;
+}
+
+.bi-heart {
+  cursor: pointer;
+}
+
+.bg-popup {
+  width: 93%;
+  background-color: rgb(255, 255, 255);
+  position: absolute;
+  top: 0;
+  justify-content: center;
+  align-items: center;
+  display: none;
+}
+
+.pop-up {
+  width: 90%;
+  background-color: rgb(255, 255, 255);
+  text-align: center;
+  border: 3px solid #333;
+  position: relative;
+}
+
+.close {
+  position: absolute;
+  top: 0;
+  right: 14px;
+  font-size: 42px;
+  transform: rotate(45deg);
+  cursor: pointer;
+}
+
+.p-img {
+  width: 155px;
+  height: 227px;
+}
+
+.form {
+  flex-direction: column;
+  margin: 0 auto;
+  width: 600px;
+}
+
+.form input[type="text"] {
+  border: 3px solid #333;
+  padding: 6px;
+  margin-bottom: 10px;
+  width: 98%;
+  display: block;
+}
+
+#comments {
+  height: 69px;
+}
+
+.form input[type="submit"] {
+  align-self: flex-end;
+  background: #fff;
+  border: 1px solid #333;
+  box-shadow: 2px 2px #333;
+  cursor: pointer;
+  font-family: monospace, sans-serif;
+  font-weight: 700;
+  padding: 3px 6px;
+  margin-right: 2px;
+  transition: all 100ms ease;
+}
+
+.form input[type="submit"]:hover {
+  background: #333;
+  color: #fff;
+  box-shadow: none;
+  transform: translate(1px, 1px);
+}
+
+#comments-table-wrapper {
+  text-align: start;
+}
+
+.footer {
+  z-index: -1 !important;
+}

@@ -1,14 +1,14 @@
-# Scory
+# Pokeflix
 
-> A Javascript web app that connects to an API to retrieve and save scores.
+> A Javascript web app that connects to an API to retrieve and save data from the Pokemon collection.
 
-![screenshot](./assets/img/app_screenshot.png)
+![screenshot](./app_screenshot.png)
 
-Scory is a web app made with Javascript that displays scores submitted by different players. It also allows you to submit your score. All data is preserved thanks to the external Leaderboard API service.
+Pokeflix is a web app made with plain Javascript that displays a list of Pokemons and their data. It also allows you to submit your comments on each of them. All data is preserved thanks to the external Leaderboard API service.
 
 ## Demo
 
-https://meltrust.github.io/scory/
+https://meltrust.github.io/js-capstone/
 
 ## Made with
 
@@ -16,10 +16,14 @@ https://meltrust.github.io/scory/
 - Webpack
 - CSS3
 - HTML5
+- Api calls with Curl and Postman
 
 ## Future Updates & Roadmap
 
 - More general styling.
+- More Pokemons.
+- Pagination.
+- Auth.
 
 ## Getting Started
 
@@ -50,6 +54,12 @@ To get a local copy up and running follow these simple example steps:
 - Github: [@meltrust](https://github.com/meltrust)
 - Linkedin: [linkedin](https://www.linkedin.com/in/meltrust/)
 - Or talk to me directly at: original.mtapia@outlook.com
+
+👤 **Amal Hersi**
+
+- GitHub: [Amal Hersi](https://github.com/Amalcxc)
+- Twitter: [@Amalcx4](https://twitter.com/home?lang=en)
+- LinkedIn: [Amal Hersi](https://www.linkedin.com/in/amal-hersi-a29583205/)
 
 ## 🤝 Contributing
 

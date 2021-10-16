@@ -15,6 +15,14 @@
       integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
       crossorigin="anonymous"
     ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
+    />
 
     <title>pokeflix</title>
   </head>
@@ -22,23 +30,32 @@
     <div class="container-fluid mt-3">
       <nav class="navbar navbar-light bg-light">
         <a class="navbar-brand" href="#">
-          <img src="logos.png" width="30" height="30" alt="" />
+          <img
+            class="logo-img"
+            src="https://www.pinclipart.com/picdir/middle/527-5272683_logo-pokemon-clipart-clip-free-stock-pokemon-logo.png"
+            width="30"
+            height="30"
+            alt=""
+          />
         </a>
-        <ul class="d-flex flex-row nav">
+        <ul class="d-flex flex-row nav nav-right">
           <li class="nav-item">
-            <a class="nav-link link-warning" aria-current="page" href="#"
-              >Spaceships</a
+            <a class="nav-link link-secondary fs-5" aria-current="page" href="#"
+              >Evolutions</a
             >
           </li>
           <li class="nav-item">
-            <a class="nav-link link-warning" aria-current="page" href="#"
+            <a class="nav-link link-secondary fs-5" aria-current="page" href="#"
               >Planets</a
             >
           </li>
           <li class="nav-item">
-            <a class="nav-link link-warning" aria-current="page" href="#"
+            <a class="nav-link link-secondary fs-5" aria-current="page" href="#"
               >Races</a
             >
+          </li>
+          <li class="nav-item">
+            <span class="nav-link link-secondary fs-5" id="pokeCounter"> </span>
           </li>
         </ul>
       </nav>
@@ -46,35 +63,42 @@
       <section class="main">
         <h1 class="d-none">Pokemons Section</h1>
         <div class="pokemons"></div>
+
+        <section class="footer fixed-bottom">
+          <h2 class="d-none">Footer Section</h2>
+          <div class="card">
+            <p class="card-header">
+              Created By Amal and Miguel Under CC license
+            </p>
+          </div>
+        </section>
       </section>
+
       <section class="bg-popup">
         <div class="pop-up">
           <div class="close">+</div>
-          <div id='images'></div>
-          <div id="detail">
-          </div>
+          <div id="images"></div>
+          <div id="detail"></div>
           <div id="comments-table-wrapper">
             <h3>Comments (<span id="comments-count"></span>)</h3>
-            <div id="comments-section">
-            </div>
+            <div id="comments-section"></div>
           </div>
 
           <p class="user_comments"></p>
           <form class="form">
             <h2 class="comments">Add Your comments:</h2>
-            <input type="text" id="username" name="username" placeholder="Name" required>
-            <input type="text" id="comments" placeholder="comments" required>
-            <input type="submit" value="comment" id="submit">
+            <input
+              type="text"
+              id="username"
+              name="username"
+              placeholder="Name"
+              required
+            />
+            <input type="text" id="comments" placeholder="comments" required />
+            <input type="submit" value="comment" id="submit" />
           </form>
         </div>
-    
       </section>
     </div>
-    <section class="footer fixed-bottom">
-      <h1 class="d-none">Footer Section</h1>
-      <div class="card">
-        <p class="card-header">Created By Microverse Under CC license</p>
-      </div>
-    </section>
   </body>
 </html>

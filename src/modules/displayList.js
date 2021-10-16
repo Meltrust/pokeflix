@@ -1,4 +1,3 @@
-/* eslint-disable linebreak-style */
 import { getLikes, postLikes } from './likes';
 import elementsCounter from './counter';
 

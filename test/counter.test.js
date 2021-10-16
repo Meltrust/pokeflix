@@ -1,5 +1,3 @@
-/* eslint-disable linebreak-style */
-
 import elementsCounter from '../src/modules/counter';
 
 const arrObjsPoks = [

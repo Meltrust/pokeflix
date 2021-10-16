@@ -1,5 +1,3 @@
-/* eslint-disable linebreak-style */
-
 const likesUrl = ('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/NUi2Jbfvk2pl4lxtwcBf/likes/');
 
 // GET likes

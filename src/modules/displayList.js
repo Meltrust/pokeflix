@@ -1,5 +1,6 @@
 /* eslint-disable linebreak-style */
 import { getLikes, postLikes } from './likes';
+import elementsCounter from './counter';
 
 const pokemons = document.querySelector('.pokemons');
 const commentSection = document.querySelector('#comments-section');
@@ -26,10 +27,6 @@ async function getPokemons(offset, limit) {
     promises.push(getPokemon(i));
   }
   pokemonArr = await Promise.all(promises);
-}
-
-function elementsCounter(e = []) {
-  return e.length;
 }
 
 async function createComment() {

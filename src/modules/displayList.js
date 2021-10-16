@@ -12,27 +12,27 @@ let arrayOfComments = [];
 let pokemonArr = [];
 const BASE_URL = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/';
 const APP_ID = 'NUi2Jbfvk2pl4lxtwcBf';
-// const likesUrl = ('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/NUi2Jbfvk2pl4lxtwcBf/likes/'); // likes
+const likesUrl = ('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/NUi2Jbfvk2pl4lxtwcBf/likes/'); // likes
 
 // GET likes
-// async function getLikes() {
-//   const response = await fetch(likesUrl);
-//   const obj = await response.json();
+async function getLikes() {
+  const response = await fetch(likesUrl);
+  const obj = await response.json();
 
-//   return obj;
-// }
+  return obj;
+}
 
-// // POST likes
-// async function postLikes(element = {}) {
-//   const response = await fetch(likesUrl, {
-//     method: 'POST',
-//     body: JSON.stringify(element),
-//     headers: {
-//       'Content-type': 'application/json; charset=UTF-8',
-//     },
-//   });
-//   return response.status;
-// }
+// POST likes
+async function postLikes(element = {}) {
+  const response = await fetch(likesUrl, {
+    method: 'POST',
+    body: JSON.stringify(element),
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8',
+    },
+  });
+  return response.status;
+}
 
 async function getPokemon(id) {
   const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`);
@@ -46,6 +46,10 @@ async function getPokemons(offset, limit) {
     promises.push(getPokemon(i));
   }
   pokemonArr = await Promise.all(promises);
+}
+
+function elementsCounter(e = []) {
+  return e.length;
 }
 
 async function createComment() {
@@ -76,12 +80,13 @@ async function commentsDOM() {
 
 export default async function populateGrid() {
   await getPokemons(offset, limit);
-  // const likesArr = await getLikes();
+  const likesArr = await getLikes(); // likes
 
-  pokemonArr.forEach((pokemon, index) => {
+  pokemonArr.forEach((pokemon, index) => { // AMAL index for comments
     const element = document.createElement('div');
     element.classList.add('pokecard', 'd-flex', 'flex-column', 'justify-content-around', 'position-relative');
-    element.id = index;
+    element.setAttribute('name', `${pokemon.name}`);
+    element.id = index; // AMAL index for comments
     const imgContainer = document.createElement('div');
     imgContainer.classList.add('pokeimg-container');
 
@@ -89,15 +94,43 @@ export default async function populateGrid() {
     pokeImg.src = pokemon.sprites.other['official-artwork'].front_default;
     imgContainer.appendChild(pokeImg);
 
+    const nameLikesContainer = document.createElement('div');
+    nameLikesContainer.classList.add('d-flex', 'flex-row', 'justify-content-center', 'align-items-center', 'name-likes-container', 'position-absolute');
+
+    imgContainer.appendChild(nameLikesContainer);
+
     const pokeName = document.createElement('p');
-    pokeName.classList.add('poke-name');
-    pokeName.classList.add('m-1');
+    pokeName.classList.add('poke-name', 'mb-0', 'fs-4');
+
+    // LIKES START.  THE ID CHANGES. CHECK CONFLICTS WITH AMAL'S
+    const pokeLikesContainer = document.createElement('div');
+    pokeLikesContainer.classList.add('me-2', 'fs-3');
+
+    const pokeLikesIcon = document.createElement('i');
+    pokeLikesIcon.classList.add('bi', 'bi-heart', 'fs-3');
+    pokeLikesIcon.id = `likeBtn${pokemon.id}`;
+    pokeLikesIcon.setAttribute('onclick', `window.addLike( ${pokemon.id} )`);
+
+    const pokeLikesCount = document.createElement('div');
+    const pokeLikesRetreiveCountId = likesArr.findIndex((e) => e.item_id === `item${pokemon.id}`);
+
+    pokeLikesCount.id = `likeCnt${pokemon.id}`;
+    pokeLikesCount.classList.add('fs-3', 'mb-1');
+
+    if (pokeLikesRetreiveCountId === -1 || null || undefined) {
+      pokeLikesCount.textContent = 0;
+    } else {
+      pokeLikesCount.textContent = likesArr[pokeLikesRetreiveCountId].likes;
+    }
     pokeName.textContent = pokemon.name;
+
+    pokeLikesContainer.appendChild(pokeLikesIcon);
+
+    nameLikesContainer.append(pokeLikesContainer, pokeLikesCount);
 
     const comBtn = document.createElement('button');
     comBtn.textContent = 'Comment';
-    comBtn.classList.add('btn', 'comment-button');
-    comBtn.classList.add('btn-info');
+    comBtn.classList.add('btn', 'btn-info', 'comment-button', 'fs-4');
     comBtn.setAttribute('name', pokemon.name);
     comBtn.setAttribute('onclick', `window.testyFunct( '${pokeImg.src}' )`);
     comBtn.setAttribute('id', pokemon.height);
@@ -107,8 +140,12 @@ export default async function populateGrid() {
     element.appendChild(comBtn);
 
     pokemons.append(element);
-    element.append(pokeName);
+    element.append(pokeName); // AMALS APPEND CAREFUL!
   });
+
+  const pokeCount = document.getElementById('pokeCounter');
+  pokeCount.textContent = `Pokemons Count: ${elementsCounter(pokemonArr)}`;
+
   const btn = document.querySelectorAll('button');
 
   btn.forEach((ele) => {
@@ -121,7 +158,7 @@ export default async function populateGrid() {
       detailSection.append(title);
 
       const height = document.createElement('h6');
-      height.innerHTML = `height: ${ele.id}`;
+      height.innerHTML = `height: ${ele.id}`; // CORRECT THIS.  RETURNS THE ID BUT NEED THE HEIGHT
       detailSection.append(height);
       commentsDOM();
     });
@@ -166,33 +203,19 @@ async function addcomments(e) {
   return response;
 }
 
+window.addLike = (id = '') => {
+  const obj = { item_id: `item${id}` };
+  postLikes(obj).then(() => {
+    const likeBtn = document.querySelector(`#likeBtn${id}`);
+    likeBtn.classList.replace('bi-heart', 'bi-heart-fill');
+    likeBtn.classList.add('text-danger');
+    likeBtn.setAttribute('onclick', '');
+    const likesNumber = document.querySelector(`#likeCnt${id}`);
+    likesNumber.innerHTML = `${Number.parseInt(likesNumber.innerHTML, 10) + 1}`;
+  });
+};
+
 submit.addEventListener('click', (event) => {
   event.preventDefault();
   addcomments(event);
 });
-
-// async function createComment() {
-//   const endpoint = `apps/${APP_ID}/comments?item_id=${pokeId}`;
-//   const response = await fetch(BASE_URL + endpoint);
-//   const data = await response.json();
-//   arrayOfComments = data;
-// }
-
-// async function commentsDOM() {
-//   await createComment();
-
-//   commentSection.innerHTML = '';
-//   if (arrayOfComments.length === 0) {
-//     commentsCount.innerHTML = '';
-//     commentSection.innerHTML = '';
-//   } else {
-//     arrayOfComments.forEach((comment) => {
-//       const p = document.createElement('p');
-//       p.innerHTML = `${comment.username}: ${comment.comment}`;
-//       p.className = 'comments';
-//       commentSection.append(p);
-//     });
-//     const count = arrayOfComments.length;
-//     commentsCount.innerHTML = count;
-//   }
-// }

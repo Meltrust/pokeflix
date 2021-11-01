@@ -10,6 +10,12 @@
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
       crossorigin="anonymous"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@600&display=swap"
+      rel="stylesheet"
+    />
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
@@ -28,15 +34,28 @@
   </head>
   <body>
     <div class="container-fluid mt-3">
-      <nav class="navbar navbar-light bg-light">
-        <a class="navbar-brand" href="#">
-          <img
-            class="logo-img"
-            src="https://www.pinclipart.com/picdir/middle/527-5272683_logo-pokemon-clipart-clip-free-stock-pokemon-logo.png"
-            width="30"
-            height="30"
-            alt=""
-          />
+      <nav class="navbar navbar-light bg-light rounded-pill">
+        <a
+          class="
+            navbar-brand
+            d-flex
+            flex-row
+            align-items-center
+            justify-content-around
+          "
+          href="#"
+        >
+          <span class="text-secondary fs-3 align-middle logo-text"
+            >Pokeflix</span
+          >
+
+          <div
+            class="spinner-border text-primary ms-3"
+            id="spinner"
+            role="status"
+          >
+            <span class="visually-hidden">Loading...</span>
+          </div>
         </a>
         <ul class="d-flex flex-row nav nav-right">
           <li class="nav-item">
@@ -64,39 +83,84 @@
         <h1 class="d-none">Pokemons Section</h1>
         <div class="pokemons"></div>
 
-        <section class="footer fixed-bottom">
+        <section class="footer rounded-pill bg-light">
           <h2 class="d-none">Footer Section</h2>
-          <div class="card">
-            <p class="card-header">
-              Created By Amal and Miguel Under CC license
-            </p>
+          <div>
+            <span class="">Created By Amal and Miguel Under CC license</span>
           </div>
         </section>
       </section>
 
-      <section class="bg-popup">
-        <div class="pop-up">
-          <div class="close">+</div>
-          <div id="images"></div>
-          <div id="detail"></div>
-          <div id="comments-table-wrapper">
-            <h3>Comments (<span id="comments-count"></span>)</h3>
-            <div id="comments-section"></div>
-          </div>
+      <section
+        class="bg-popup modal fade"
+        role="dialog"
+        id="mainPopup"
+        tabindex="-1"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-scrollable">
+          <div class="pop-up modal-content">
+            <div class="modal-header">
+              <h5
+                class="modal-title fs-3 text-capitalize text-center fw-bold"
+                id="modalTitle"
+              ></h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
 
-          <p class="user_comments"></p>
-          <form class="form">
-            <h2 class="comments">Add Your comments:</h2>
-            <input
-              type="text"
-              id="username"
-              name="username"
-              placeholder="Name"
-              required
-            />
-            <input type="text" id="comments" placeholder="comments" required />
-            <input type="submit" value="comment" id="submit" />
-          </form>
+            <div class="modal-body p-3 d-flex flex-column align-items-center">
+              <div id="images"></div>
+              <div class="row w-100">
+                <div id="detail" class="col-md-6 mt-3 mb-2 p-3 fw-bold"></div>
+                <div id="detail2" class="col-md-6 mt-3 mb-2 p-3 fw-bold"></div>
+              </div>
+              <div id="comments-table-wrapper">
+                <h3 class="mb-3 text-center">
+                  Comments (<span id="comments-count"></span>)
+                </h3>
+                <div id="commentSection"></div>
+              </div>
+              <p class="user_comments"></p>
+
+              <form class="form" id="comForm">
+                <h2 class="comments">Add Your comments:</h2>
+                <small id="valErr" class="text-danger"></small>
+                <input
+                  type="text"
+                  id="username"
+                  name="username"
+                  placeholder="Name"
+                  required
+                />
+                <input
+                  type="text"
+                  id="comments"
+                  placeholder="comments"
+                  required
+                />
+                <div>
+                  <input type="submit" value="comment" id="submit" />
+                  <div
+                    class="
+                      spinner-border spinner-border-sm
+                      text-primary
+                      ms-3
+                      d-none
+                    "
+                    id="spinnerCom"
+                    role="status"
+                  >
+                    <span class="visually-hidden">Loading...</span>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
         </div>
       </section>
     </div>

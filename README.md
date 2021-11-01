@@ -24,6 +24,7 @@ https://meltrust.github.io/pokeflix/
 - More Pokemons.
 - Pagination.
 - Auth.
+- Responsive design
 
 ## Getting Started
 

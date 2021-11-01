@@ -12,11 +12,11 @@ https://meltrust.github.io/pokeflix/
 
 ## Made with
 
-- Plain Javascript
-- Webpack
-- CSS3
-- HTML5
-- Api calls with Curl and Postman
+- Plain Javascript ✔️
+- Webpack ✔️
+- CSS3 ✔️
+- HTML5 ✔️
+- Api calls with Curl and Postman ✔️
 
 ## Future Updates & Roadmap
 

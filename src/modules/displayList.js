@@ -191,6 +191,11 @@ async function addcomments(e) {
     return false;
   }
   e.preventDefault();
+  const spinComment = document.getElementById('spinnerCom');
+  spinComment.classList.toggle('d-none');
+  const submitComButton = document.getElementById('submit');
+  submitComButton.classList.toggle('d-none');
+
   const endpoint = `apps/${APP_ID}/comments`;
   const response = await fetch(BASE_URL + endpoint, {
     method: 'POST',
@@ -205,7 +210,10 @@ async function addcomments(e) {
     }),
 
   });
-
+  if (response) {
+    spinComment.classList.toggle('d-none');
+    submitComButton.classList.toggle('d-none');
+  }
   createComment();
   username.value = '';
   comments.value = '';

@@ -88,7 +88,7 @@ nav {
   cursor: pointer;
 }
 
-.bg-popup {
+/* .bg-popup {
   width: 93%;
   background-color: rgb(255, 255, 255);
   position: absolute;
@@ -104,26 +104,30 @@ nav {
   text-align: center;
   border: 3px solid #333;
   position: relative;
-}
+} */
 
-.close {
+/* .close {
   position: absolute;
   top: 0;
   right: 14px;
   font-size: 42px;
   transform: rotate(45deg);
   cursor: pointer;
-}
+} */
 
 .p-img {
   width: 155px;
   height: 227px;
 }
 
+#images img {
+  width: 80%;
+}
+
 .form {
   flex-direction: column;
   margin: 0 auto;
-  width: 600px;
+  width: 80%;
 }
 
 .form input[type="text"] {
@@ -132,6 +136,13 @@ nav {
   margin-bottom: 10px;
   width: 98%;
   display: block;
+}
+
+#commentSection {
+  display: flex;
+  flex-direction: column;
+
+  /* width: 80%; */
 }
 
 #comments {
@@ -160,6 +171,7 @@ nav {
 
 #comments-table-wrapper {
   text-align: start;
+  width: 80%;
 }
 
 .footer {

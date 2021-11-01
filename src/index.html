@@ -83,29 +83,62 @@
         </section>
       </section>
 
-      <section class="bg-popup">
-        <div class="pop-up">
-          <div class="close">+</div>
-          <div id="images"></div>
-          <div id="detail"></div>
-          <div id="comments-table-wrapper">
-            <h3>Comments (<span id="comments-count"></span>)</h3>
-            <div id="comments-section"></div>
-          </div>
+      <section
+        class="bg-popup modal fade"
+        role="dialog"
+        id="mainPopup"
+        tabindex="-1"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-scrollable">
+          <div class="pop-up modal-content">
+            <div class="modal-header">
+              <h5
+                class="modal-title fs-3 text-capitalize text-center fw-bold"
+                id="modalTitle"
+              ></h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
 
-          <p class="user_comments"></p>
-          <form class="form">
-            <h2 class="comments">Add Your comments:</h2>
-            <input
-              type="text"
-              id="username"
-              name="username"
-              placeholder="Name"
-              required
-            />
-            <input type="text" id="comments" placeholder="comments" required />
-            <input type="submit" value="comment" id="submit" />
-          </form>
+            <div class="modal-body p-3 d-flex flex-column align-items-center">
+              <div id="images"></div>
+              <div class="row w-100">
+                <div id="detail" class="col-md-6 mt-3 mb-2 p-3 fw-bold"></div>
+                <div id="detail2" class="col-md-6 mt-3 mb-2 p-3 fw-bold"></div>
+              </div>
+              <div id="comments-table-wrapper">
+                <h3 class="mb-3 text-center">
+                  Comments (<span id="comments-count"></span>)
+                </h3>
+                <div id="commentSection"></div>
+              </div>
+              <p class="user_comments"></p>
+
+              <form class="form" id="comForm">
+                <h2 class="comments">Add Your comments:</h2>
+                <small id="valErr" class="text-danger"></small>
+                <input
+                  type="text"
+                  id="username"
+                  name="username"
+                  placeholder="Name"
+                  required
+                />
+                <input
+                  type="text"
+                  id="comments"
+                  placeholder="comments"
+                  required
+                />
+                <input type="submit" value="comment" id="submit" />
+              </form>
+            </div>
+          </div>
         </div>
       </section>
     </div>

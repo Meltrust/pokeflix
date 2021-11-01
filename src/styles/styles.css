@@ -10,6 +10,11 @@ body {
   text-align: center;
 }
 
+nav {
+  width: 90%;
+  margin: auto;
+}
+
 .nav-right {
   margin-right: 12rem;
 }
@@ -18,10 +23,9 @@ body {
   position: relative;
 }
 
-.logo-img {
-  margin-left: 12rem;
-  height: 40px;
-  width: 8rem;
+.logo-text {
+  margin-left: 13rem;
+  font-family: 'Sora', sans-serif;
 }
 
 .pokemons {
@@ -84,7 +88,7 @@ body {
   cursor: pointer;
 }
 
-.bg-popup {
+/* .bg-popup {
   width: 93%;
   background-color: rgb(255, 255, 255);
   position: absolute;
@@ -100,26 +104,30 @@ body {
   text-align: center;
   border: 3px solid #333;
   position: relative;
-}
+} */
 
-.close {
+/* .close {
   position: absolute;
   top: 0;
   right: 14px;
   font-size: 42px;
   transform: rotate(45deg);
   cursor: pointer;
-}
+} */
 
 .p-img {
   width: 155px;
   height: 227px;
 }
 
+#images img {
+  width: 80%;
+}
+
 .form {
   flex-direction: column;
   margin: 0 auto;
-  width: 600px;
+  width: 80%;
 }
 
 .form input[type="text"] {
@@ -128,6 +136,13 @@ body {
   margin-bottom: 10px;
   width: 98%;
   display: block;
+}
+
+#commentSection {
+  display: flex;
+  flex-direction: column;
+
+  /* width: 80%; */
 }
 
 #comments {
@@ -156,8 +171,11 @@ body {
 
 #comments-table-wrapper {
   text-align: start;
+  width: 80%;
 }
 
 .footer {
   z-index: -1 !important;
+  width: 90%;
+  margin: auto;
 }

@@ -1,9 +1,12 @@
+/* eslint-disable linebreak-style */
+
 import { getLikes, postLikes } from './likes';
 import elementsCounter from './counter';
 
 const pokemons = document.querySelector('.pokemons');
-const commentSection = document.querySelector('#comments-section');
+const commentSection = document.querySelector('#commentSection');
 const detailSection = document.querySelector('#detail');
+const detailSection2 = document.querySelector('#detail2');
 const imageSection = document.querySelector('#images');
 const commentsCount = document.querySelector('#comments-count');
 const limit = 8;
@@ -12,11 +15,19 @@ let pokeId = 0;
 let arrayOfComments = [];
 let pokemonArr = [];
 const BASE_URL = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/';
-const APP_ID = 'NUi2Jbfvk2pl4lxtwcBf';
+const APP_ID = 'dXTjle5wBhwiX6PKtZxO';
+
+function hideSpinnerNav() {
+  document.getElementById('spinner')
+    .style.display = 'none';
+}
 
 async function getPokemon(id) {
   const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`);
   const data = await response.json();
+  if (response) {
+    hideSpinnerNav();
+  }
   return data;
 }
 
@@ -39,15 +50,20 @@ async function commentsDOM() {
   await createComment();
 
   commentSection.innerHTML = '';
-  if (arrayOfComments.length === 0) {
-    commentsCount.innerHTML = '';
+  if (arrayOfComments.length === 0 || arrayOfComments.error) {
+    commentsCount.innerHTML = '0';
     commentSection.innerHTML = '';
   } else {
     arrayOfComments.forEach((comment) => {
-      const p = document.createElement('p');
-      p.innerHTML = `${comment.username}: ${comment.comment}`;
-      p.className = 'comments';
-      commentSection.append(p);
+      const comContainer = document.createElement('div');
+      const b = document.createElement('b');
+      const comContent = document.createElement('span');
+      b.innerHTML = `${comment.username}: `;
+      comContent.innerHTML = `${comment.comment}`;
+
+      comContainer.append(b, comContent);
+      comContainer.classList.add('mb-2');
+      commentSection.append(comContainer);
     });
     const count = arrayOfComments.length;
     commentsCount.innerHTML = count;
@@ -107,6 +123,8 @@ export default async function populateGrid() {
     comBtn.textContent = 'Comment';
     comBtn.classList.add('btn', 'btn-info', 'comment-button', 'fs-4');
     comBtn.setAttribute('name', pokemon.name);
+    comBtn.setAttribute('data-bs-toggle', 'modal');
+    comBtn.setAttribute('data-bs-target', '#mainPopup');
 
     comBtn.setAttribute('onclick', `window.testyFunct( '${pokeImg.src}' )`);
     comBtn.setAttribute('id', index);
@@ -126,22 +144,26 @@ export default async function populateGrid() {
   btn.forEach((ele) => {
     ele.addEventListener('click', (e) => {
       detailSection.innerHTML = '';
-      document.querySelector('.bg-popup').style.display = 'flex';
+      detailSection2.innerHTML = '';
+
       pokeId = e.target.parentNode.id;
       const { height } = pokemonArr[pokeId];
       const { weight } = pokemonArr[pokeId];
       const exp = pokemonArr[pokeId].base_experience;
-      const title = document.createElement('h6');
-      title.innerHTML = `Name: ${ele.name}`;
-      detailSection.append(title);
-      const heightDom = document.createElement('h6');
-      const weightDom = document.createElement('h6');
-      const expDom = document.createElement('h6');
+      const title = document.createElement('p');
 
+      const heightDom = document.createElement('p');
+      const weightDom = document.createElement('p');
+      const expDom = document.createElement('p');
+      const modalName = document.getElementById('modalTitle');
+      modalName.innerHTML = `${ele.name}`;
+
+      title.innerHTML = `Name: ${ele.name}`;
       heightDom.innerHTML = `Height: ${height}`;
       weightDom.innerHTML = `Weight: ${weight}`;
       expDom.innerHTML = `Experience: ${exp}`;
-      detailSection.append(heightDom, weightDom, expDom);
+      detailSection.append(title, heightDom);
+      detailSection2.append(weightDom, expDom);
       commentsDOM();
     });
   });
@@ -154,18 +176,26 @@ window.testyFunct = (e) => {
   imageSection.append(img);
 };
 
-const close = document.querySelector('.close');
-
-close.addEventListener('click', () => {
-  document.querySelector('.bg-popup').style.display = 'none';
-});
-
 const username = document.querySelector('#username');
 const comments = document.querySelector('#comments');
 const submit = document.querySelector('#submit');
 
 async function addcomments(e) {
+  if (!username.value || !comments.value) {
+    const errPlacing = document.getElementById('valErr');
+
+    errPlacing.innerHTML = ('Please fill both fields \n');
+
+    setTimeout(() => errPlacing.removeChild(errPlacing.childNodes[0]), 2000);
+
+    return false;
+  }
   e.preventDefault();
+  const spinComment = document.getElementById('spinnerCom');
+  spinComment.classList.toggle('d-none');
+  const submitComButton = document.getElementById('submit');
+  submitComButton.classList.toggle('d-none');
+
   const endpoint = `apps/${APP_ID}/comments`;
   const response = await fetch(BASE_URL + endpoint, {
     method: 'POST',
@@ -180,7 +210,13 @@ async function addcomments(e) {
     }),
 
   });
+  if (response) {
+    spinComment.classList.toggle('d-none');
+    submitComButton.classList.toggle('d-none');
+  }
   createComment();
+  username.value = '';
+  comments.value = '';
   commentsDOM();
   return response;
 }

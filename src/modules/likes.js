@@ -1,4 +1,6 @@
-const likesUrl = ('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/NUi2Jbfvk2pl4lxtwcBf/likes/');
+/* eslint-disable linebreak-style */
+
+const likesUrl = ('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/dXTjle5wBhwiX6PKtZxO/likes/');
 
 // GET likes
 export async function getLikes() {

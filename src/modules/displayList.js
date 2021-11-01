@@ -15,7 +15,7 @@ let pokeId = 0;
 let arrayOfComments = [];
 let pokemonArr = [];
 const BASE_URL = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/';
-const APP_ID = 'NUi2Jbfvk2pl4lxtwcBf';
+const APP_ID = 'dXTjle5wBhwiX6PKtZxO';
 
 async function getPokemon(id) {
   const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`);
@@ -42,8 +42,8 @@ async function commentsDOM() {
   await createComment();
 
   commentSection.innerHTML = '';
-  if (arrayOfComments.length === 0) {
-    commentsCount.innerHTML = '';
+  if (arrayOfComments.length === 0 || arrayOfComments.error) {
+    commentsCount.innerHTML = '0';
     commentSection.innerHTML = '';
   } else {
     arrayOfComments.forEach((comment) => {
@@ -177,8 +177,6 @@ async function addcomments(e) {
     const errPlacing = document.getElementById('valErr');
 
     errPlacing.innerHTML = ('Please fill both fields \n');
-
-    // errPlacing.append(errContainer, caReturn);
 
     setTimeout(() => errPlacing.removeChild(errPlacing.childNodes[0]), 2000);
 

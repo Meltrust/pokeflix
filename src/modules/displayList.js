@@ -17,9 +17,17 @@ let pokemonArr = [];
 const BASE_URL = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/';
 const APP_ID = 'dXTjle5wBhwiX6PKtZxO';
 
+function hideSpinnerNav() {
+  document.getElementById('spinner')
+    .style.display = 'none';
+}
+
 async function getPokemon(id) {
   const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`);
   const data = await response.json();
+  if (response) {
+    hideSpinnerNav();
+  }
   return data;
 }
 

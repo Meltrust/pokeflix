@@ -10,6 +10,11 @@ body {
   text-align: center;
 }
 
+nav {
+  width: 90%;
+  margin: auto;
+}
+
 .nav-right {
   margin-right: 12rem;
 }
@@ -18,10 +23,9 @@ body {
   position: relative;
 }
 
-.logo-img {
-  margin-left: 12rem;
-  height: 40px;
-  width: 8rem;
+.logo-text {
+  margin-left: 13rem;
+  font-family: 'Sora', sans-serif;
 }
 
 .pokemons {
@@ -160,4 +164,6 @@ body {
 
 .footer {
   z-index: -1 !important;
+  width: 90%;
+  margin: auto;
 }

@@ -8,7 +8,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/Meltrust/pokeflix" style="text-decoration: none;">
-    <img src="/logo-pokeflix3.png" alt="Reserved logo" width="100" height="100" align="center">
+    <img src="/assets/readme-imgs/logo-pokeflix3.png" alt="Reserved logo" width="100" height="100" align="center">
   </a>
 
   <h2 align="center">Pokeflix</h2>
@@ -65,13 +65,13 @@ A web desktop app that connects to an API to retrieve and save data from the **P
 ### Homepage
 
   
-![screenshot](./app_screenshot.png)
+![screenshot](./assets/readme-imgs/app_screenshot.png)
   
 <br />
   
 ### Pokemon info and comments popup
   
-![screenshot](./pokeflix-popup.png)  
+![screenshot](./assets/readme-imgs/assets/readme-imgs/pokeflix-popup.png)  
   
 <br />
 
@@ -82,13 +82,13 @@ A web desktop app that connects to an API to retrieve and save data from the **P
 ### Homepage phone
   
 <p align="center" width="100%">
-    <img width="40%" src="/pokeflix-home-small.png"> 
+    <img width="40%" src="./assets/readme-imgs/assets/readme-imgs/pokeflix-home-small.png"> 
 </p>
   
 ### Pokemon info and comments popup phone
   
 <p align="center" width="100%">
-    <img width="40%" src="/pokeflix-popup-small.png"> 
+    <img width="40%" src="./assets/readme-imgs/assets/readme-imgs/pokeflix-popup-small.png"> 
 </p>
 
 <br />
@@ -100,13 +100,13 @@ A web desktop app that connects to an API to retrieve and save data from the **P
 ### Homepage tablets
   
 <p align="center" width="100%">
-    <img width="40%" src="/pokeflix-home-tablets.png"> 
+    <img width="40%" src="./assets/readme-imgs/assets/readme-imgs/pokeflix-home-tablets.png"> 
 </p>
   
 ### Pokemon info and comments popup tablets
   
 <p align="center" width="100%">
-    <img width="40%" src="/pokeflix-popup-tablets.png"> 
+    <img width="40%" src="./assets/readme-imgs/pokeflix-popup-tablets.png"> 
 </p>
   
 <hr />

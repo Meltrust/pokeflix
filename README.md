@@ -71,7 +71,7 @@ A web desktop app that connects to an API to retrieve and save data from the **P
   
 ### Pokemon info and comments popup
   
-![screenshot](./assets/readme-imgs/assets/readme-imgs/pokeflix-popup.png)  
+![screenshot](./assets/readme-imgs/pokeflix-popup.png)  
   
 <br />
 
@@ -82,13 +82,13 @@ A web desktop app that connects to an API to retrieve and save data from the **P
 ### Homepage phone
   
 <p align="center" width="100%">
-    <img width="40%" src="./assets/readme-imgs/assets/readme-imgs/pokeflix-home-small.png"> 
+    <img width="40%" src="./assets/readme-imgs/pokeflix-home-small.png"> 
 </p>
   
 ### Pokemon info and comments popup phone
   
 <p align="center" width="100%">
-    <img width="40%" src="./assets/readme-imgs/assets/readme-imgs/pokeflix-popup-small.png"> 
+    <img width="40%" src="./assets/readme-imgs/pokeflix-popup-small.png"> 
 </p>
 
 <br />
@@ -100,7 +100,7 @@ A web desktop app that connects to an API to retrieve and save data from the **P
 ### Homepage tablets
   
 <p align="center" width="100%">
-    <img width="40%" src="./assets/readme-imgs/assets/readme-imgs/pokeflix-home-tablets.png"> 
+    <img width="40%" src="./assets/readme-imgs/pokeflix-home-tablets.png"> 
 </p>
   
 ### Pokemon info and comments popup tablets

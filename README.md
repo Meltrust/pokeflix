@@ -38,6 +38,9 @@
   - [Small devices view](#small-devices-view)
     - [Homepage phone](#homepage-phone)
     - [Pokemon info and comments popup phone](#pokemon-info-and-comments-popup-phone)
+  - [Tablets view](#tablets-view)
+    - [Homepage tablets](#homepage-tablets)
+    - [Pokemon info and comments popup tablets](#pokemon-info-and-comments-popup-tablets)
   - [Demo](#demo)
   - [Made with](#made-with)
   - [Future updates and roadmap](#future-updates-and-roadmap)
@@ -49,7 +52,7 @@
 - [Acknowledgments](#acknowledgments)
 - [License](#license)
 
-  
+<hr />
   
 ## About
 
@@ -72,16 +75,41 @@ A web desktop app that connects to an API to retrieve and save data from the **P
   
 <br />
 
+<hr />
   
 ## Small devices view
   
 ### Homepage phone
   
-*To be added later*
+<p align="center" width="100%">
+    <img width="40%" src="/pokeflix-home-small.png"> 
+</p>
   
 ### Pokemon info and comments popup phone
   
-*To be added later*
+<p align="center" width="100%">
+    <img width="40%" src="/pokeflix-popup-small.png"> 
+</p>
+
+<br />
+
+<hr />
+  
+## Tablets view
+  
+### Homepage tablets
+  
+<p align="center" width="100%">
+    <img width="40%" src="/pokeflix-home-tablets.png"> 
+</p>
+  
+### Pokemon info and comments popup tablets
+  
+<p align="center" width="100%">
+    <img width="40%" src="/pokeflix-popup-tablets.png"> 
+</p>
+  
+<hr />
 
 ## Demo
 

@@ -8,7 +8,7 @@ Pokeflix is a web app made with plain Javascript that displays a list of Pokemon
 
 ## Demo
 
-https://meltrust.github.io/js-capstone/
+https://meltrust.github.io/pokeflix/
 
 ## Made with
 

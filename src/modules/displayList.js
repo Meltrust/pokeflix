@@ -22,11 +22,23 @@ function hideSpinnerNav() {
     .style.display = 'none';
 }
 
+function hideFooter() {
+  document.getElementById('footer')
+    .style.display = 'none';
+}
+
+function showFooter() {
+  document.getElementById('footer')
+    .style.display = 'block';
+}
+
 async function getPokemon(id) {
+  hideFooter();
   const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`);
   const data = await response.json();
   if (response) {
     hideSpinnerNav();
+    showFooter();
   }
   return data;
 }

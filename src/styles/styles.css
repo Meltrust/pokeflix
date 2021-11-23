@@ -157,3 +157,17 @@ nav {
   position: relative;
   top: 13rem;
 }
+
+.poke-counter {
+  margin-left: 40rem;
+}
+
+@media only screen and (max-width: 768px) {
+  .logo-text {
+    margin-left: 4rem !important;
+  }
+
+  .poke-counter {
+    margin-left: auto;
+  }
+}

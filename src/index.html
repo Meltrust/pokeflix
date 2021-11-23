@@ -33,8 +33,16 @@
     <title>pokeflix</title>
   </head>
   <body>
-    <div class="container-fluid mt-3">
-      <nav class="navbar navbar-light bg-light rounded-pill">
+    <div class="container-fluid">
+      <nav
+        class="
+          navbar navbar-expand-md navbar-light
+          bg-light
+          rounded-pill
+          mt-3
+          px-4 px-md-1
+        "
+      >
         <a
           class="
             navbar-brand
@@ -49,26 +57,50 @@
             >Pokeflix</span
           >
         </a>
-        <ul class="d-flex flex-row nav nav-right">
-          <li class="nav-item">
-            <a class="nav-link link-secondary fs-5" aria-current="page" href="#"
-              >Evolutions</a
-            >
-          </li>
-          <li class="nav-item">
-            <a class="nav-link link-secondary fs-5" aria-current="page" href="#"
-              >Planets</a
-            >
-          </li>
-          <li class="nav-item">
-            <a class="nav-link link-secondary fs-5" aria-current="page" href="#"
-              >Races</a
-            >
-          </li>
-          <li class="nav-item">
-            <span class="nav-link link-secondary fs-5" id="pokeCounter"> </span>
-          </li>
-        </ul>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="d-flex flex-row nav nav-right ms-5 ms-md-1">
+            <li class="nav-item">
+              <a
+                class="nav-link link-secondary fs-5"
+                aria-current="page"
+                href="#"
+                >Evolutions</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link link-secondary fs-5"
+                aria-current="page"
+                href="#"
+                >Planets</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link link-secondary fs-5"
+                aria-current="page"
+                href="#"
+                >Races</a
+              >
+            </li>
+            <li class="nav-item poke-counter">
+              <span class="nav-link link-secondary fs-5" id="pokeCounter">
+              </span>
+            </li>
+          </ul>
+        </div>
       </nav>
 
       <section class="main">
@@ -104,7 +136,9 @@
               <h5
                 class="modal-title fs-3 text-capitalize text-center fw-bold"
                 id="modalTitle"
-              ></h5>
+              >
+                placeholder
+              </h5>
               <button
                 type="button"
                 class="btn-close"

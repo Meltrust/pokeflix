@@ -88,33 +88,6 @@ nav {
   cursor: pointer;
 }
 
-/* .bg-popup {
-  width: 93%;
-  background-color: rgb(255, 255, 255);
-  position: absolute;
-  top: 0;
-  justify-content: center;
-  align-items: center;
-  display: none;
-}
-
-.pop-up {
-  width: 90%;
-  background-color: rgb(255, 255, 255);
-  text-align: center;
-  border: 3px solid #333;
-  position: relative;
-} */
-
-/* .close {
-  position: absolute;
-  top: 0;
-  right: 14px;
-  font-size: 42px;
-  transform: rotate(45deg);
-  cursor: pointer;
-} */
-
 .p-img {
   width: 155px;
   height: 227px;
@@ -141,8 +114,6 @@ nav {
 #commentSection {
   display: flex;
   flex-direction: column;
-
-  /* width: 80%; */
 }
 
 #comments {
@@ -178,4 +149,106 @@ nav {
   z-index: -1 !important;
   width: 90%;
   margin: auto;
+}
+
+.main-spinner {
+  height: 20rem;
+  width: 20rem;
+  position: relative;
+  top: 13rem;
+}
+
+.poke-counter {
+  margin-left: 40rem;
+}
+
+.rounded-pill {
+  border-radius: 3rem !important;
+}
+
+@media only screen and (max-width: 720px) {
+  .poke-counter {
+    margin-left: auto;
+    font-style: italic;
+  }
+
+  .logo-text {
+    margin-left: 1rem !important;
+  }
+
+  .pokemons {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    height: 100%;
+  }
+
+  .footer {
+    margin-bottom: 1rem;
+  }
+}
+
+@media only screen and (min-width: 800px) {
+  .logo-text {
+    margin-left: 2.5rem !important;
+  }
+
+  .poke-counter {
+    margin-left: auto;
+  }
+
+  .pokemons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    height: 100%;
+  }
+
+  .nav-right {
+    margin-right: auto;
+  }
+
+  .footer {
+    margin-bottom: 1rem;
+  }
+
+  @media only screen and (min-width: 1140px) {
+    .logo-text {
+      margin-left: 13rem !important;
+    }
+
+    .nav-right {
+      margin-right: auto;
+    }
+
+    .poke-counter {
+      margin-left: 40rem;
+    }
+
+    .pokemons {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1rem;
+      width: 80%;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 1rem;
+      margin-top: 1rem;
+      height: 100%;
+    }
+
+    .footer {
+      margin-bottom: auto;
+    }
+  }
 }

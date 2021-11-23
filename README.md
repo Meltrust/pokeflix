@@ -8,7 +8,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/Meltrust/pokeflix" style="text-decoration: none;">
-    <img src="/logo-pokeflix3.png" alt="Reserved logo" width="100" height="100" align="center">
+    <img src="/assets/readme-imgs/logo-pokeflix3.png" alt="Reserved logo" width="100" height="100" align="center">
   </a>
 
   <h2 align="center">Pokeflix</h2>
@@ -38,6 +38,9 @@
   - [Small devices view](#small-devices-view)
     - [Homepage phone](#homepage-phone)
     - [Pokemon info and comments popup phone](#pokemon-info-and-comments-popup-phone)
+  - [Tablets view](#tablets-view)
+    - [Homepage tablets](#homepage-tablets)
+    - [Pokemon info and comments popup tablets](#pokemon-info-and-comments-popup-tablets)
   - [Demo](#demo)
   - [Made with](#made-with)
   - [Future updates and roadmap](#future-updates-and-roadmap)
@@ -49,11 +52,11 @@
 - [Acknowledgments](#acknowledgments)
 - [License](#license)
 
-  
+<hr />
   
 ## About
 
-A web desktop app that connects to an API to retrieve and save data from the **Pokemon** collection. Made with plain Javascript and served with Webpack. You can retrieve a list of Pokemons, submit comments and likes. Pagination and phone versions are being added at later updates.
+A web desktop app that connects to an API to retrieve and save data from the **Pokemon** collection. Made with plain Javascript and served with Webpack. You can retrieve a list of Pokemons, submit comments and likes. Pagination is being added at a later update.
 
 <br />
   
@@ -62,26 +65,51 @@ A web desktop app that connects to an API to retrieve and save data from the **P
 ### Homepage
 
   
-![screenshot](./app_screenshot.png)
+![screenshot](./assets/readme-imgs/app_screenshot.png)
   
 <br />
   
 ### Pokemon info and comments popup
   
-![screenshot](./pokeflix-popup.png)  
+![screenshot](./assets/readme-imgs/pokeflix-popup.png)  
   
 <br />
 
+<hr />
   
 ## Small devices view
   
 ### Homepage phone
   
-*To be added later*
+<p align="center" width="100%">
+    <img width="40%" src="./assets/readme-imgs/pokeflix-home-small.png"> 
+</p>
   
 ### Pokemon info and comments popup phone
   
-*To be added later*
+<p align="center" width="100%">
+    <img width="40%" src="./assets/readme-imgs/pokeflix-popup-small.png"> 
+</p>
+
+<br />
+
+<hr />
+  
+## Tablets view
+  
+### Homepage tablets
+  
+<p align="center" width="100%">
+    <img width="40%" src="./assets/readme-imgs/pokeflix-home-tablets.png"> 
+</p>
+  
+### Pokemon info and comments popup tablets
+  
+<p align="center" width="100%">
+    <img width="40%" src="./assets/readme-imgs/pokeflix-popup-tablets.png"> 
+</p>
+  
+<hr />
 
 ## Demo
 

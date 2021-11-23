@@ -56,7 +56,7 @@
   
 ## About
 
-A web desktop app that connects to an API to retrieve and save data from the **Pokemon** collection. Made with plain Javascript and served with Webpack. You can retrieve a list of Pokemons, submit comments and likes. Pagination is being added at a later updates.
+A web desktop app that connects to an API to retrieve and save data from the **Pokemon** collection. Made with plain Javascript and served with Webpack. You can retrieve a list of Pokemons, submit comments and likes. Pagination is being added at a later update.
 
 <br />
   

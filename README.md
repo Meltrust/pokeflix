@@ -136,9 +136,13 @@ https://meltrust.github.io/pokeflix/
 To get a local copy up and running follow these simple example steps:
 
 1. Under the repository name, click the Clone or download green button.
+  
+<br />
 
 ![clone](https://user-images.githubusercontent.com/53324035/73660989-4451aa80-4667-11ea-8a89-176f89d6548a.png)
 
+<br />
+  
 2. Copy the URL given by clicking the clipboard button
 
 3. Open a terminal window in your local machine and change the current directory to the one you want the clone directory to be made.

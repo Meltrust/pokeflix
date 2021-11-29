@@ -147,11 +147,9 @@ To get a local copy up and running follow these simple example steps:
 
 5. Change the current directory to the newly created folder
 
-6. Open the index.html file on your browser. You can add and remove books which persist on browser reloads.
+6. In your terminal, `npm install` to install the dependencies.
 
-7 .In your terminal, `npm install` to install the dependencies.
-
-8. Now run `npm start` and the app should appear on your browser.
+7. Now run `npm start` and the app should appear on your browser.
 
 ## Authors
 
